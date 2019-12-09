@@ -50,6 +50,7 @@ class Dog
       create(name: name, breed: breed)
     else
       self.new_from_db(dog_data[0])
+    end
   end
 
 end
