@@ -38,7 +38,7 @@ class Dog
     Dog.new(id: row[0], name: row[1], breed: row[2])
   end
 
-#[[1, "Kevin", "shepard"]] return value of method below
+#dog_data =[[1, "Kevin", "shepard"]] return value of method below
   def self.find_by_id(id)
     dog_data = DB[:conn].execute("SELECT * FROM dogs WHERE id = ?", id) #fill in question mark with what comes after, in this case id
     new_from_db(dog_data[0])
@@ -48,8 +48,8 @@ class Dog
     dog_data = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
     if dog_data.empty?
       create(name: name, breed: breed)
-    Dog.new
-
+    else
+      self.new_from_db(dog_data[0])
   end
 
 end
