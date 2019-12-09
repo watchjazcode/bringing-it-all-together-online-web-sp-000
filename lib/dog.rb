@@ -59,4 +59,8 @@ class Dog
     return self.new_from_db(dog_data[0])
   end
 
+  def update
+    DB[:conn].execute("UPDATE dogs SET name = ? WHERE id = ?", @name, @id) #coming from instance, so instance variables
+  end
+
 end
